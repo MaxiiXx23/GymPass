@@ -1,8 +1,9 @@
 import express from 'express'
-import { PrismaClient } from '@prisma/client'
+
+import { routes } from '@/http/routes/index.routes'
+import { errorHandler } from '@/http/errors/errorHandler'
 
 const app = express()
-const prisma = new PrismaClient()
 
 app.use(express.json())
 
@@ -10,11 +11,7 @@ app.get('/', function (req, res) {
   res.send('Hello World')
 })
 
-// prisma.user.create({
-//   data: {
-//     email: 'max.123@hotmail.com',
-//     name: 'Max',
-//   },
-// })
+app.use(routes)
 
+app.use(errorHandler)
 export { app }
