@@ -20,16 +20,12 @@ export class CreateUserUseCase {
       throw new EmailAlreadyExistsError()
     }
 
-    try {
-      const user = await this.usersRepository.create({
-        name,
-        email,
-        password_hash,
-      })
+    const user = await this.usersRepository.create({
+      name,
+      email,
+      password_hash,
+    })
 
-      return user
-    } catch {
-      throw new Error('Error createUser with Prisma.')
-    }
+    return user
   }
 }
