@@ -1,10 +1,10 @@
 import { prisma } from '@/lib/prisma'
 import { Prisma } from '@prisma/client'
-import { IUsersRepository } from './IUsersRepository'
+import { IUsersRepository } from '../IUsersRepository'
 
+// SOLID - O - Open Closed Principle é utilizado nesse arquivo,
+// pois implementa um interface que abstrai os métodos necessários para seu funcionamento.
 export class PrismaUsersRepository implements IUsersRepository {
-  // O Prisma gera automaticamente os DTOs para usarmos em nosso Pattern Repository
-  // diferente do TypeORM onde é necessário criamos manualmente
   async create(data: Prisma.UserCreateInput) {
     const { name, email, password_hash } = data
 

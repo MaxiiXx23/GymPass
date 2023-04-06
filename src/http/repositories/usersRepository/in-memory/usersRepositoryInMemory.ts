@@ -1,6 +1,8 @@
 import { User, Prisma } from '@prisma/client'
 import { IUsersRepository } from '../IUsersRepository'
 
+// SOLID - O - Open Closed Principle é utilizado nesse arquivo,
+// pois implementa um interface que abstrai os métodos necessários para seu funcionamento.
 class UsersRepositoryInMemory implements IUsersRepository {
   public users: User[] = []
 

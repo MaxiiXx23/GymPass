@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { z } from 'zod'
 
 import { CreateUserUseCase } from '@/http/useCases/CreateUser/CreateUserUseCase'
-import { PrismaUsersRepository } from '@/http/repositories/usersRepository/prisma-users-repository'
+import { PrismaUsersRepository } from '@/http/repositories/usersRepository/prisma/prisma-users-repository'
 import { EmailAlreadyExistsError } from '@/http/useCases/CreateUser/errors/EmailAlreadyExistsError'
 
 export async function registerController(
@@ -10,14 +10,14 @@ export async function registerController(
   response: Response,
   next: NextFunction,
 ) {
-  const registerSchema = z.object({
+  const registerBodySchema = z.object({
     name: z.string(),
     email: z.string().email(),
     password: z.string().min(6),
   })
 
   try {
-    const { name, email, password } = registerSchema.parse(request.body)
+    const { name, email, password } = registerBodySchema.parse(request.body)
     const usersRepository = new PrismaUsersRepository()
     const createUserUseCase = new CreateUserUseCase(usersRepository)
 
