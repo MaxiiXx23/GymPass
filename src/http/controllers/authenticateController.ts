@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { z } from 'zod'
-import { PrismaUsersRepository } from '@/http/repositories/usersRepository/prisma/prisma-users-repository'
-import { AuthenticateUseCase } from '@/http/useCases/authenticate/AuthenticateUseCase'
+
 import { InvalidCredentialsError } from '@/http/useCases/authenticate/errors/InvalidCredentialsError'
+import { makeAuthenticateUseCase } from '../useCases/authenticate/factories/make-authenticate-use-case'
 
 export async function authenticateController(
   request: Request,
@@ -17,8 +17,7 @@ export async function authenticateController(
   try {
     const { email, password } = authenticateBodySchema.parse(request.body)
 
-    const usersRespository = new PrismaUsersRepository()
-    const authenticateUseCase = new AuthenticateUseCase(usersRespository)
+    const authenticateUseCase = makeAuthenticateUseCase()
 
     const { user } = await authenticateUseCase.execute({ email, password })
 

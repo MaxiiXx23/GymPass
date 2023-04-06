@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { z } from 'zod'
 
-import { CreateUserUseCase } from '@/http/useCases/CreateUser/CreateUserUseCase'
-import { PrismaUsersRepository } from '@/http/repositories/usersRepository/prisma/prisma-users-repository'
-import { EmailAlreadyExistsError } from '@/http/useCases/CreateUser/errors/EmailAlreadyExistsError'
+import { EmailAlreadyExistsError } from '@/http/useCases/register/errors/EmailAlreadyExistsError'
+import { makeRegisterUseCase } from '../useCases/register/factories/make-register-use-case'
 
 export async function registerController(
   request: Request,
@@ -18,10 +17,10 @@ export async function registerController(
 
   try {
     const { name, email, password } = registerBodySchema.parse(request.body)
-    const usersRepository = new PrismaUsersRepository()
-    const createUserUseCase = new CreateUserUseCase(usersRepository)
 
-    await createUserUseCase.execute({ name, email, password })
+    const registerUseCase = makeRegisterUseCase()
+
+    await registerUseCase.execute({ name, email, password })
 
     return response.status(201).json({ msg: 'User created.' })
   } catch (err) {

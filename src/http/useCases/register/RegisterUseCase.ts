@@ -11,7 +11,7 @@ interface IRequest {
 // SOLID - D - Dependency Inversion Principle utilizada, onde o constructor recebe
 // a abstração da class que irá ser utilizada, e não a class em si,
 // assim o tornando dependente da abstração e não da class.
-export class CreateUserUseCase {
+export class RegisterUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   async execute({ name, email, password }: IRequest) {

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 
-import { CreateUserUseCase } from './CreateUserUseCase'
+import { RegisterUseCase } from './RegisterUseCase'
 import { compare } from 'bcryptjs'
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { EmailAlreadyExistsError } from './errors/EmailAlreadyExistsError'
@@ -9,15 +9,15 @@ import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepo
 // Unit Testing
 
 let usersRepository: IUsersRepository
-let createUserUseCase: CreateUserUseCase
+let registerUseCase: RegisterUseCase
 
-describe('Create User Use Case', () => {
+describe('register Use Case', () => {
   beforeEach(() => {
     usersRepository = new UsersRepositoryInMemory()
-    createUserUseCase = new CreateUserUseCase(usersRepository)
+    registerUseCase = new RegisterUseCase(usersRepository)
   })
   it('Should to be create a new user', async () => {
-    const user = await createUserUseCase.execute({
+    const user = await registerUseCase.execute({
       name: 'John Doe',
       email: 'johndoe@test.com',
       password: '123456',
@@ -29,7 +29,7 @@ describe('Create User Use Case', () => {
   })
 
   it('Should to be create hash user to register', async () => {
-    const { password_hash } = await createUserUseCase.execute({
+    const { password_hash } = await registerUseCase.execute({
       name: 'John Doe',
       email: 'johndoe@test.com',
       password: '123456',
@@ -43,14 +43,14 @@ describe('Create User Use Case', () => {
   it('Should not to be create user with same email twice', async () => {
     const email = 'johndoe@test.com'
 
-    await createUserUseCase.execute({
+    await registerUseCase.execute({
       name: 'John Doe',
       email,
       password: '123456',
     })
 
     expect(async () => {
-      await createUserUseCase.execute({
+      await registerUseCase.execute({
         name: 'John Doe',
         email,
         password: '123456',
