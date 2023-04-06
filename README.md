@@ -22,8 +22,8 @@
 ## RFs (Requisitos funcionais)
 
 - [x] Deve ser possível se cadastrar;
-- [] Deve ser possível se autenticar;
-- [] Deve ser possível obter o perfil de um usuário logado;
+- [x] Deve ser possível se autenticar;
+- [x] Deve ser possível obter o perfil de um usuário logado;
 - [] Deve ser possível obter o número de check-ins realizados por um usuário;
 - [] Deve ser possível o usuário buscar acadêmias próximas a ele;
 - [] Deve ser possível buscar acadêmias pelo nome;
@@ -37,7 +37,6 @@
 - [] O usuário não pode fazer mais de dois check-ins por dia;
 - [] O usuário não pode fazer check-in se não tiver pelo menos a 100m da acadêmia;
 - [] O check-in só pode ser válido até 20 minutos após ser criado;
-- [] O check-in só pode ser válido até 20 minutos após ser criado;
 - [] O check-in só pode ser válidado por administrador;
 - [] A acadêmia só pode ser criada por um admistrador;
 
@@ -45,7 +44,6 @@
 ## RNFs (Requisitos não funcionais)
 
 - [x] A senha precisa ser criptografada;
-- [] Os dados da aplicação precisam estar persistidos(salvos) em BD PostgreSQL;
 - [] Os dados da aplicação precisam estar persistidos(salvos) em BD PostgreSQL;
 - [] Todas as listas de dados precisar estar paginadas com 20 itens por página;
 - [] O usuário deve ser identificado por um JWT(JSON Web Token);
