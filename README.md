@@ -27,18 +27,19 @@
 - [] Deve ser possível obter o número de check-ins realizados por um usuário;
 - [] Deve ser possível o usuário buscar acadêmias próximas a ele;
 - [] Deve ser possível buscar acadêmias pelo nome;
-- [] Deve ser possível realizar um check-in em uma acadêmia;
+- [x] Deve ser possível realizar um check-in em uma acadêmia;
 - [] Deve ser possível validar um check-in de um usuário;
 - [] Deve ser possível cadastrar um acadêmia;
 
 ## RNs (Regras de negócio)
 
 - [x] O usuário não pode se cadastrar um e-mail duplicado;
-- [] O usuário não pode fazer mais de dois check-ins por dia;
+- [x] O usuário não pode fazer mais de dois check-ins por dia;
 - [] O usuário não pode fazer check-in se não tiver pelo menos a 100m da acadêmia;
 - [] O check-in só pode ser válido até 20 minutos após ser criado;
 - [] O check-in só pode ser válidado por administrador;
 - [] A acadêmia só pode ser criada por um admistrador;
+- [] A acadêmia não pode ser cadastrada com title(nome) duplicado;
 
 
 ## RNFs (Requisitos não funcionais)
