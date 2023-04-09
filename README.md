@@ -26,6 +26,7 @@
 - [x] Deve ser possível obter o perfil de um usuário logado;
 - [] Deve ser possível obter o número de check-ins realizados por um usuário;
 - [] Deve ser possível o usuário buscar acadêmias próximas a ele;
+- [x] O usuário pode visualizar o histórico de check-ins;
 - [] Deve ser possível buscar acadêmias pelo nome;
 - [x] Deve ser possível realizar um check-in em uma acadêmia;
 - [] Deve ser possível validar um check-in de um usuário;
@@ -35,7 +36,7 @@
 
 - [x] O usuário não pode se cadastrar um e-mail duplicado;
 - [x] O usuário não pode fazer mais de dois check-ins por dia;
-- [] O usuário não pode fazer check-in se não tiver pelo menos a 100m da acadêmia;
+- [x] O usuário não pode fazer check-in se não tiver pelo menos a 100m da acadêmia;
 - [] O check-in só pode ser válido até 20 minutos após ser criado;
 - [] O check-in só pode ser válidado por administrador;
 - [] A acadêmia só pode ser criada por um admistrador;
@@ -46,6 +47,6 @@
 
 - [x] A senha precisa ser criptografada;
 - [] Os dados da aplicação precisam estar persistidos(salvos) em BD PostgreSQL;
-- [] Todas as listas de dados precisar estar paginadas com 20 itens por página;
+- [x] Todas as listas de dados precisar estar paginadas com 20 itens por página;
 - [] O usuário deve ser identificado por um JWT(JSON Web Token);
 

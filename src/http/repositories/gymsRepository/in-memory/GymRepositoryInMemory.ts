@@ -2,7 +2,7 @@ import { Gym, Prisma } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
 
 import { IGymRepository } from '../IGymsRepository'
-import { Decimal } from '@prisma/client/runtime'
+import { Decimal } from '@prisma/client/runtime/library'
 
 export class GymRepositoryInMemory implements IGymRepository {
   public gyms: Gym[] = []

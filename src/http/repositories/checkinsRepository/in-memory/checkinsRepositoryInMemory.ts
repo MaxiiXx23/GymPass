@@ -7,6 +7,14 @@ import { ICheckInsRepository } from '../ICheckInsRespository'
 export class CheckInsRepositoryInMemory implements ICheckInsRepository {
   public checkins: Checkin[] = []
 
+  async findManyByUserId(id: string, page: number): Promise<Checkin[]> {
+    const listCheckIns = this.checkins
+      .filter((checkIn) => checkIn.user_id === id)
+      .slice((page - 1) * 20, page * 20)
+
+    return listCheckIns
+  }
+
   async findByUserIdOnDate(
     userId: string,
     data: Date,
