@@ -24,7 +24,7 @@
 - [x] Deve ser possível se cadastrar;
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível obter o perfil de um usuário logado;
-- [] Deve ser possível obter o número de check-ins realizados por um usuário;
+- [x] Deve ser possível obter o número de check-ins realizados por um usuário;
 - [] Deve ser possível o usuário buscar acadêmias próximas a ele;
 - [x] O usuário pode visualizar o histórico de check-ins;
 - [] Deve ser possível buscar acadêmias pelo nome;
@@ -40,7 +40,7 @@
 - [] O check-in só pode ser válido até 20 minutos após ser criado;
 - [] O check-in só pode ser válidado por administrador;
 - [] A acadêmia só pode ser criada por um admistrador;
-- [] A acadêmia não pode ser cadastrada com title(nome) duplicado;
+- [x] A acadêmia não pode ser cadastrada com title(nome) duplicado;
 
 
 ## RNFs (Requisitos não funcionais)

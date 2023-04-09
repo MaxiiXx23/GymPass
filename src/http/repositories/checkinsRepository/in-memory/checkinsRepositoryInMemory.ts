@@ -5,11 +5,19 @@ import { randomUUID } from 'node:crypto'
 import { ICheckInsRepository } from '../ICheckInsRespository'
 
 export class CheckInsRepositoryInMemory implements ICheckInsRepository {
-  public checkins: Checkin[] = []
+  public items: Checkin[] = []
 
-  async findManyByUserId(id: string, page: number): Promise<Checkin[]> {
-    const listCheckIns = this.checkins
-      .filter((checkIn) => checkIn.user_id === id)
+  async countByUserId(userId: string): Promise<number> {
+    const checkIns = this.items.filter((checkIn) => checkIn.user_id === userId)
+
+    const total = checkIns.length
+
+    return total
+  }
+
+  async findManyByUserId(userId: string, page: number): Promise<Checkin[]> {
+    const listCheckIns = this.items
+      .filter((checkIn) => checkIn.user_id === userId)
       .slice((page - 1) * 20, page * 20)
 
     return listCheckIns
@@ -22,7 +30,7 @@ export class CheckInsRepositoryInMemory implements ICheckInsRepository {
     const startOfTheDay = dayjs(data).startOf('date')
     const endOfTheDay = dayjs(data).endOf('date')
 
-    const checkInSameOnDate = this.checkins.find((checkIn) => {
+    const checkInSameOnDate = this.items.find((checkIn) => {
       const checkInDate = dayjs(checkIn.created_at)
 
       // clean code
@@ -50,7 +58,7 @@ export class CheckInsRepositoryInMemory implements ICheckInsRepository {
       created_at: new Date(),
     }
 
-    this.checkins.push(checkin)
+    this.items.push(checkin)
 
     return checkin
   }

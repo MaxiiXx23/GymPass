@@ -8,6 +8,7 @@ import { getDistanceBetweenCoordinate } from '@/utils/get-distance-between-coord
 import { MaxDistanceError } from './errors/maxDistanceError'
 import { MaxNumberOfCheckInsError } from './errors/maxNumberOfCheckInsError'
 import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 
 interface IRequest {
   userId: string
@@ -24,6 +25,7 @@ export class CheckInUseCase {
   constructor(
     private checkInsRepository: ICheckInsRepository,
     private gymsRepository: IGymRepository,
+    private usersRepository: IUsersRepository,
   ) {}
 
   async execute({
@@ -32,6 +34,12 @@ export class CheckInUseCase {
     userLatitude,
     userLongitude,
   }: IRequest): Promise<IResponse> {
+    const hasUser = await this.usersRepository.findById(userId)
+
+    if (!hasUser) {
+      throw new ResourceNotFoundError()
+    }
+
     const gym = await this.gymsRepository.findById(gymId)
 
     if (!gym) {

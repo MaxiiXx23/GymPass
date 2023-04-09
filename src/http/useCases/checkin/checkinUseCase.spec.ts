@@ -1,23 +1,43 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-
-import { ICheckInsRepository } from '@/http/repositories/checkinsRepository/ICheckInsRespository'
+import { hash } from 'bcryptjs'
 
 import { CheckInUseCase } from './CheckInUseCase'
+
+import { ICheckInsRepository } from '@/http/repositories/checkinsRepository/ICheckInsRespository'
 import { CheckInsRepositoryInMemory } from '@/http/repositories/checkinsRepository/in-memory/checkinsRepositoryInMemory'
 import { IGymRepository } from '@/http/repositories/gymsRepository/IGymsRepository'
 import { GymRepositoryInMemory } from '@/http/repositories/gymsRepository/in-memory/GymRepositoryInMemory'
+import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
+import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
+
 import { MaxDistanceError } from './errors/maxDistanceError'
 import { MaxNumberOfCheckInsError } from './errors/maxNumberOfCheckInsError'
+import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
 
 let checkInsRepository: ICheckInsRepository
 let gymsRepository: IGymRepository
+let usersRepository: IUsersRepository
 let sut: CheckInUseCase
 
 describe('Checkins Use Case', () => {
   beforeEach(async () => {
     checkInsRepository = new CheckInsRepositoryInMemory()
     gymsRepository = new GymRepositoryInMemory()
-    sut = new CheckInUseCase(checkInsRepository, gymsRepository)
+    usersRepository = new UsersRepositoryInMemory()
+    sut = new CheckInUseCase(
+      checkInsRepository,
+      gymsRepository,
+      usersRepository,
+    )
+
+    const passwordHashed = await hash('123456', 8)
+
+    await usersRepository.create({
+      id: 'user-id-1',
+      name: 'John Doe',
+      email: 'johndoe@testing.com',
+      password_hash: passwordHashed,
+    })
 
     await gymsRepository.create({
       id: 'gym-id-1',
@@ -124,5 +144,16 @@ describe('Checkins Use Case', () => {
         userLongitude: -46.3488171,
       })
     }).rejects.toBeInstanceOf(MaxDistanceError)
+  })
+
+  it('Should not be able create check-in if user id not exists.', async () => {
+    expect(async () => {
+      await sut.execute({
+        userId: 'invalid-user-id',
+        gymId: 'gym-id-1',
+        userLatitude: -23.4441994,
+        userLongitude: -46.3217671,
+      })
+    }).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })
