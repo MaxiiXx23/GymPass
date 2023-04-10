@@ -27,7 +27,7 @@
 - [x] Deve ser possível obter o número de check-ins realizados por um usuário;
 - [] Deve ser possível o usuário buscar acadêmias próximas a ele;
 - [x] O usuário pode visualizar o histórico de check-ins;
-- [] Deve ser possível buscar acadêmias pelo nome;
+- [x] Deve ser possível buscar acadêmias pelo nome(Title);
 - [x] Deve ser possível realizar um check-in em uma acadêmia;
 - [] Deve ser possível validar um check-in de um usuário;
 - [] Deve ser possível cadastrar um acadêmia;

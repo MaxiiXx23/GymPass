@@ -5,10 +5,18 @@ import { IGymRepository } from '../IGymsRepository'
 import { Decimal } from '@prisma/client/runtime/library'
 
 export class GymRepositoryInMemory implements IGymRepository {
-  public gyms: Gym[] = []
+  public items: Gym[] = []
+
+  async findManyByQuery(query: string, page: number): Promise<Gym[]> {
+    const gyms = this.items
+      .filter((gym) => gym.title.includes(query))
+      .slice((page - 1) * 20, page * 20)
+
+    return gyms
+  }
 
   async findById(id: string): Promise<Gym | null> {
-    const gym = this.gyms.find((gym) => gym.id === id)
+    const gym = this.items.find((gym) => gym.id === id)
 
     if (!gym) {
       return null
@@ -18,7 +26,7 @@ export class GymRepositoryInMemory implements IGymRepository {
   }
 
   async findByTitle(title: string): Promise<Gym | null> {
-    const gym = this.gyms.find((gym) => gym.title === title)
+    const gym = this.items.find((gym) => gym.title === title)
 
     if (!gym) {
       return null
@@ -38,7 +46,7 @@ export class GymRepositoryInMemory implements IGymRepository {
       created_at: new Date(),
     }
 
-    this.gyms.push(gym)
+    this.items.push(gym)
 
     return gym
   }

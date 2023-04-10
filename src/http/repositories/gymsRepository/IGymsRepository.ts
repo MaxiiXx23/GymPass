@@ -4,4 +4,5 @@ export interface IGymRepository {
   create(data: Prisma.GymCreateInput): Promise<Gym>
   findById(id: string): Promise<Gym | null>
   findByTitle(title: string): Promise<Gym | null>
+  findManyByQuery(query: string, page: number): Promise<Gym[]>
 }
