@@ -5,7 +5,29 @@ import { randomUUID } from 'node:crypto'
 import { ICheckInsRepository } from '../ICheckInsRespository'
 
 export class CheckInsRepositoryInMemory implements ICheckInsRepository {
-  public items: Checkin[] = []
+  public readonly items: Checkin[] = []
+
+  async save(data: Checkin): Promise<Checkin> {
+    const checkInIndexOf = this.items.findIndex(
+      (checkIn) => checkIn.id === data.id,
+    )
+
+    if (checkInIndexOf >= 0) {
+      this.items[checkInIndexOf] = data
+    }
+
+    return data
+  }
+
+  async findById(id: string): Promise<Checkin | null> {
+    const checkIn = this.items.find((checkIn) => checkIn.id === id)
+
+    if (!checkIn) {
+      return null
+    }
+
+    return checkIn
+  }
 
   async countByUserId(userId: string): Promise<number> {
     const checkIns = this.items.filter((checkIn) => checkIn.user_id === userId)

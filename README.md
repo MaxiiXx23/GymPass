@@ -29,7 +29,7 @@
 - [x] O usuário pode visualizar o histórico de check-ins;
 - [x] Deve ser possível buscar acadêmias pelo nome(Title);
 - [x] Deve ser possível realizar um check-in em uma acadêmia;
-- [] Deve ser possível validar um check-in de um usuário;
+- [x] Deve ser possível validar um check-in de um usuário;
 - [x] Deve ser possível cadastrar um acadêmia;
 
 ## RNs (Regras de negócio)
@@ -37,7 +37,7 @@
 - [x] O usuário não pode se cadastrar um e-mail duplicado;
 - [x] O usuário não pode fazer mais de dois check-ins por dia;
 - [x] O usuário não pode fazer check-in se não tiver pelo menos a 100m da acadêmia;
-- [] O check-in só pode ser válido até 20 minutos após ser criado;
+- [x] O check-in só pode ser válido até 20 minutos após ser criado;
 - [] O check-in só pode ser válidado por administrador;
 - [] A acadêmia só pode ser criada por um admistrador;
 - [x] A acadêmia não pode ser cadastrada com title(nome) duplicado;
