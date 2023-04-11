@@ -25,12 +25,12 @@
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível obter o perfil de um usuário logado;
 - [x] Deve ser possível obter o número de check-ins realizados por um usuário;
-- [] Deve ser possível o usuário buscar acadêmias próximas a ele;
+- [x] Deve ser possível o usuário buscar acadêmias próximas a ele;
 - [x] O usuário pode visualizar o histórico de check-ins;
 - [x] Deve ser possível buscar acadêmias pelo nome(Title);
 - [x] Deve ser possível realizar um check-in em uma acadêmia;
 - [] Deve ser possível validar um check-in de um usuário;
-- [] Deve ser possível cadastrar um acadêmia;
+- [x] Deve ser possível cadastrar um acadêmia;
 
 ## RNs (Regras de negócio)
 
