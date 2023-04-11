@@ -1,15 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { hash } from 'bcryptjs'
 
-import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
-
 import { GetUserProfileUseCase } from './GetUserProfileUseCase'
 
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 
 import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
 
-let usersRepository: IUsersRepository
+let usersRepository: UsersRepositoryInMemory
 let getUserProfileUseCase: GetUserProfileUseCase
 
 describe('Get User Profile Use Case', () => {

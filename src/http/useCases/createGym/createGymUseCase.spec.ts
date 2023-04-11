@@ -1,12 +1,11 @@
-import { IGymRepository } from '@/http/repositories/gymsRepository/IGymsRepository'
-import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 import { describe, it, beforeEach, expect } from 'vitest'
+
 import { CreateGymUseCase } from './CreateGymUseCase'
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { GymRepositoryInMemory } from '@/http/repositories/gymsRepository/in-memory/GymRepositoryInMemory'
 
-let usersRepository: IUsersRepository
-let gymsRepository: IGymRepository
+let usersRepository: UsersRepositoryInMemory
+let gymsRepository: GymRepositoryInMemory
 
 let sut: CreateGymUseCase
 

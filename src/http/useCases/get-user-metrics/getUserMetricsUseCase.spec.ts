@@ -3,15 +3,13 @@ import { hash } from 'bcryptjs'
 
 import { GetUserMetricsUseCase } from './GetUserMetricsUseCase'
 
-import { ICheckInsRepository } from '@/http/repositories/checkinsRepository/ICheckInsRespository'
-import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { CheckInsRepositoryInMemory } from '@/http/repositories/checkinsRepository/in-memory/checkinsRepositoryInMemory'
 
 import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
 
-let usersRepository: IUsersRepository
-let checkInsRepository: ICheckInsRepository
+let usersRepository: UsersRepositoryInMemory
+let checkInsRepository: CheckInsRepositoryInMemory
 let sut: GetUserMetricsUseCase
 
 describe('Get User Metrics Use Case', () => {

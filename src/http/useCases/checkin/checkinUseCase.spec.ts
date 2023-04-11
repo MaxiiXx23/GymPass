@@ -3,20 +3,18 @@ import { hash } from 'bcryptjs'
 
 import { CheckInUseCase } from './CheckInUseCase'
 
-import { ICheckInsRepository } from '@/http/repositories/checkinsRepository/ICheckInsRespository'
 import { CheckInsRepositoryInMemory } from '@/http/repositories/checkinsRepository/in-memory/checkinsRepositoryInMemory'
-import { IGymRepository } from '@/http/repositories/gymsRepository/IGymsRepository'
+
 import { GymRepositoryInMemory } from '@/http/repositories/gymsRepository/in-memory/GymRepositoryInMemory'
-import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 
 import { MaxDistanceError } from './errors/maxDistanceError'
 import { MaxNumberOfCheckInsError } from './errors/maxNumberOfCheckInsError'
 import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
 
-let checkInsRepository: ICheckInsRepository
-let gymsRepository: IGymRepository
-let usersRepository: IUsersRepository
+let checkInsRepository: CheckInsRepositoryInMemory
+let gymsRepository: GymRepositoryInMemory
+let usersRepository: UsersRepositoryInMemory
 let sut: CheckInUseCase
 
 describe('Checkins Use Case', () => {

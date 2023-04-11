@@ -3,10 +3,9 @@ import { randomUUID } from 'crypto'
 
 import { SearchFetchGymsUseCase } from './SearchFetchGymsUseCase'
 
-import { IGymRepository } from '@/http/repositories/gymsRepository/IGymsRepository'
 import { GymRepositoryInMemory } from '@/http/repositories/gymsRepository/in-memory/GymRepositoryInMemory'
 
-let gymsRepository: IGymRepository
+let gymsRepository: GymRepositoryInMemory
 let sut: SearchFetchGymsUseCase
 
 describe('Search Fetch Gyms Use Case', () => {

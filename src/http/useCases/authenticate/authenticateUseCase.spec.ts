@@ -4,9 +4,8 @@ import { hash } from 'bcryptjs'
 import { AuthenticateUseCase } from './AuthenticateUseCase'
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { InvalidCredentialsError } from './errors/InvalidCredentialsError'
-import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 
-let usersRepositoryInMemory: IUsersRepository
+let usersRepositoryInMemory: UsersRepositoryInMemory
 let sut: AuthenticateUseCase
 
 describe('Authenticate Use Case', () => {

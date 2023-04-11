@@ -3,10 +3,10 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { FetchNearbyGymsUseCase } from './FetchNearbyGymsUseCase'
 
 import { GymRepositoryInMemory } from '@/http/repositories/gymsRepository/in-memory/GymRepositoryInMemory'
-import { IGymRepository } from '@/http/repositories/gymsRepository/IGymsRepository'
+
 import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
 
-let gymsRepository: IGymRepository
+let gymsRepository: GymRepositoryInMemory
 let sut: FetchNearbyGymsUseCase
 
 describe('Fetch Nearby Gyms Use Case', () => {

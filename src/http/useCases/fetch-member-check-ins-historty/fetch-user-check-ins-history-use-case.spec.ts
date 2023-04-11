@@ -3,16 +3,13 @@ import { hash } from 'bcryptjs'
 
 import { FetchUserCheckInsHistoryUseCase } from './fetch-users-check-ins-history-use-case'
 
-import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
-import { ICheckInsRepository } from '@/http/repositories/checkinsRepository/ICheckInsRespository'
-
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { CheckInsRepositoryInMemory } from '@/http/repositories/checkinsRepository/in-memory/checkinsRepositoryInMemory'
 
 import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
 
-let usersRepository: IUsersRepository
-let checkInsRepository: ICheckInsRepository
+let usersRepository: UsersRepositoryInMemory
+let checkInsRepository: CheckInsRepositoryInMemory
 let sut: FetchUserCheckInsHistoryUseCase
 
 describe('Fetch User Check-ins Use Case', () => {

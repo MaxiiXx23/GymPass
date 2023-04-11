@@ -4,11 +4,10 @@ import { RegisterUseCase } from './RegisterUseCase'
 import { compare } from 'bcryptjs'
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { EmailAlreadyExistsError } from './errors/EmailAlreadyExistsError'
-import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 
 // Unit Testing
 
-let usersRepository: IUsersRepository
+let usersRepository: UsersRepositoryInMemory
 let registerUseCase: RegisterUseCase
 
 describe('register Use Case', () => {
