@@ -47,10 +47,10 @@ export class CheckInsRepositoryInMemory implements ICheckInsRepository {
 
   async findByUserIdOnDate(
     userId: string,
-    data: Date,
+    date: Date,
   ): Promise<Checkin | null> {
-    const startOfTheDay = dayjs(data).startOf('date')
-    const endOfTheDay = dayjs(data).endOf('date')
+    const startOfTheDay = dayjs(date).startOf('date')
+    const endOfTheDay = dayjs(date).endOf('date')
 
     const checkInSameOnDate = this.items.find((checkIn) => {
       const checkInDate = dayjs(checkIn.created_at)
