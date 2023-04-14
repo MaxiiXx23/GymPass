@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { z } from 'zod'
 
-import { InvalidCredentialsError } from '@/http/useCases/authenticate/errors/InvalidCredentialsError'
-import { makeAuthenticateUseCase } from '../useCases/authenticate/factories/make-authenticate-use-case'
+import { InvalidCredentialsError } from '@/useCases/authenticate/errors/InvalidCredentialsError'
+import { makeAuthenticateUseCase } from '@/useCases/authenticate/factories/make-authenticate-use-case'
 
 export async function authenticateController(
   request: Request,

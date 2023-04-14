@@ -1,8 +1,8 @@
 import { Router } from 'express'
 
-import { registerController } from '@/http/controllers/registerController'
-import { authenticateController } from '@/http/controllers/authenticateController'
-import { profileController } from '../controllers/profileController'
+import { registerController } from '@/http/controllers/register/registerController'
+import { authenticateController } from '../controllers/authenticate/authenticateController'
+import { profileController } from '../controllers/profile/profileController'
 
 import { verifyToken } from '../middlewares/verifyToken'
 

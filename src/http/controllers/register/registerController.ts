@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { z } from 'zod'
 
-import { EmailAlreadyExistsError } from '@/http/useCases/register/errors/EmailAlreadyExistsError'
-import { makeRegisterUseCase } from '../useCases/register/factories/make-register-use-case'
+import { EmailAlreadyExistsError } from '@/useCases/register/errors/EmailAlreadyExistsError'
+import { makeRegisterUseCase } from '../../../useCases/register/factories/make-register-use-case'
 
 export async function registerController(
   request: Request,

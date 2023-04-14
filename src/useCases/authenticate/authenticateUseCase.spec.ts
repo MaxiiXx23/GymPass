@@ -26,12 +26,12 @@ describe('Authenticate Use Case', () => {
       password_hash,
     })
 
-    const { user } = await sut.execute({
+    const { token } = await sut.execute({
       email,
       password: '123456',
     })
 
-    expect(user).toHaveProperty('email')
+    expect(token).toEqual(expect.any(String))
   })
 
   it('Should not be able to authenticate with invalid e-mail', async () => {
