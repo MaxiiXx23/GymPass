@@ -1,16 +1,17 @@
 import { compare } from 'bcryptjs'
+import { sign } from 'jsonwebtoken'
 
 import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 import { InvalidCredentialsError } from './errors/InvalidCredentialsError'
-import { User } from '@prisma/client'
 
+import { auth } from '@/config/auth'
 interface IRequest {
   email: string
   password: string
 }
 
 interface IResponse {
-  user: User
+  token: string
 }
 
 export class AuthenticateUseCase {
@@ -25,17 +26,20 @@ export class AuthenticateUseCase {
       throw new InvalidCredentialsError()
     }
 
-    // compare password_hash with password if are compatives
     // dicas de clean code: variáveis que representam um boolean começamos com um sufixo -> is, has, does
-
     const doesPasswordMatches = await compare(password, user.password_hash)
 
     if (!doesPasswordMatches) {
       throw new InvalidCredentialsError()
     }
 
+    const token = sign({}, auth.secret_key_JWT, {
+      subject: user.id,
+      expiresIn: auth.experies_in_JWT,
+    })
+
     return {
-      user,
+      token,
     }
   }
 }

@@ -19,9 +19,9 @@ export async function authenticateController(
 
     const authenticateUseCase = makeAuthenticateUseCase()
 
-    const { user } = await authenticateUseCase.execute({ email, password })
+    const { token } = await authenticateUseCase.execute({ email, password })
 
-    return response.status(200).json({ user })
+    return response.status(200).json({ token })
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {
       return response.status(400).json({ error: err.message })
