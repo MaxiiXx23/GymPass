@@ -1,6 +1,9 @@
+import { Gym } from '@prisma/client'
+
 import { IGymRepository } from '@/http/repositories/gymsRepository/IGymsRepository'
 import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
-import { Gym } from '@prisma/client'
+
+import { GymAlreadyExistsError } from './errors/GymAlreadyExistsError'
 
 interface IRequest {
   title: string
@@ -30,7 +33,7 @@ export class CreateGymUseCase {
     const hasCreatedGym = await this.gymsRepository.findByTitle(title)
 
     if (hasCreatedGym) {
-      throw new Error('Gym Already Exists.')
+      throw new GymAlreadyExistsError()
     }
 
     const gym = await this.gymsRepository.create({

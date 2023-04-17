@@ -3,6 +3,7 @@ import { describe, it, beforeEach, expect } from 'vitest'
 import { CreateGymUseCase } from './CreateGymUseCase'
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { GymRepositoryInMemory } from '@/http/repositories/gymsRepository/in-memory/GymRepositoryInMemory'
+import { GymAlreadyExistsError } from './errors/GymAlreadyExistsError'
 
 let usersRepository: UsersRepositoryInMemory
 let gymsRepository: GymRepositoryInMemory
@@ -60,6 +61,6 @@ describe('Create Gym Use Case', () => {
         latitude: -23.4383508,
         longitude: -46.3205561,
       })
-    }).rejects.toBeInstanceOf(Error)
+    }).rejects.toBeInstanceOf(GymAlreadyExistsError)
   })
 })
