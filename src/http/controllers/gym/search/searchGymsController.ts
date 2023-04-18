@@ -10,13 +10,13 @@ export async function searchGymsController(
   response: Response,
   next: NextFunction,
 ) {
-  const searchSchema = z.object({
+  const searchQuerySchema = z.object({
     q: z.string(),
     page: z.coerce.number().min(1).default(1),
   })
 
   try {
-    const { q, page } = searchSchema.parse(request.body)
+    const { q, page } = searchQuerySchema.parse(request.query)
     const searchGymsUseCase = makeSearchGymsUseCase()
 
     const { gyms } = await searchGymsUseCase.execute({

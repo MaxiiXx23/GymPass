@@ -9,22 +9,28 @@ export async function fetchNearbyGymsController(
   response: Response,
   next: NextFunction,
 ) {
-  const fetchNearbySchema = z.object({
-    userLatitude: z.number().refine((value: number) => {
+  const fetchNearbyQuerySchema = z.object({
+    page: z.coerce.number().min(1).default(1),
+    latitude: z.coerce.number().refine((value: number) => {
       return Math.abs(value) <= 90
     }),
-    userLongitude: z.number().refine((value: number) => {
+    longitude: z.coerce.number().refine((value: number) => {
       return Math.abs(value) <= 180
     }),
-    page: z.coerce.number().min(1).default(1),
   })
 
   try {
-    const data = fetchNearbySchema.parse(request.body)
+    const { page, latitude, longitude } = fetchNearbyQuerySchema.parse(
+      request.query,
+    )
 
     const fetchNearbyGymsUseCase = makeFetchNearbyGymsUseCase()
 
-    const { gyms } = await fetchNearbyGymsUseCase.execute(data)
+    const { gyms } = await fetchNearbyGymsUseCase.execute({
+      userLatitude: latitude,
+      userLongitude: longitude,
+      page,
+    })
 
     return response.status(200).json(gyms)
   } catch (err) {
