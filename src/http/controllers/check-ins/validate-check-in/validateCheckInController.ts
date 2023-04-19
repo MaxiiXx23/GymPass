@@ -11,12 +11,12 @@ export async function validateCheckInController(
   response: Response,
   next: NextFunction,
 ) {
-  const validateQuerySchema = z.object({
+  const validateParamsSchema = z.object({
     checkInId: z.string().uuid(),
   })
 
   try {
-    const { checkInId } = validateQuerySchema.parse(request.params)
+    const { checkInId } = validateParamsSchema.parse(request.params)
 
     const validateCheckInUseCase = makeValidateCheckInUseCase()
 
