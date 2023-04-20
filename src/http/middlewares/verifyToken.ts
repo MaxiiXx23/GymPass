@@ -1,11 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
-
-import { auth } from '@/config/auth'
 import { verify } from 'jsonwebtoken'
 
-interface IPayload {
-  sub: string
-}
+import { auth } from '@/config/auth'
+import { IPayloadDTO } from '@/dtos/PayloadDTO'
 
 export function verifyToken(
   request: Request,
@@ -20,7 +17,7 @@ export function verifyToken(
   const [, token] = authHeader.split(' ')
 
   try {
-    const { sub: userId } = verify(token, auth.secret_key_JWT) as IPayload
+    const { sub: userId } = verify(token, auth.secret_key_JWT) as IPayloadDTO
     request.user = {
       id: userId,
     }

@@ -19,9 +19,21 @@ export async function authenticateController(
 
     const authenticateUseCase = makeAuthenticateUseCase()
 
-    const { token } = await authenticateUseCase.execute({ email, password })
+    const { token, refreshToken } = await authenticateUseCase.execute({
+      email,
+      password,
+    })
 
-    return response.status(200).json({ token })
+    return response
+      .cookie('refreshToken', refreshToken, {
+        path: '/',
+        secure: true,
+        sameSite: true,
+        httpOnly: true,
+        signed: false,
+      })
+      .status(200)
+      .json({ token })
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {
       return response.status(400).json({ error: err.message })

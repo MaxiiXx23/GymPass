@@ -1,4 +1,5 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
 
 import { routes } from '@/http/routes/index.routes'
 import { errorHandler } from '@/http/errors/errorHandler'
@@ -6,6 +7,7 @@ import { errorHandler } from '@/http/errors/errorHandler'
 const app = express()
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.get('/', function (req, res) {
   res.send('Hello World')

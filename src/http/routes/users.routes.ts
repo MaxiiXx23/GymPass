@@ -5,11 +5,13 @@ import { authenticateController } from '../controllers/user/authenticate/authent
 import { profileController } from '../controllers/user/profile/profileController'
 
 import { verifyToken } from '../middlewares/verifyToken'
+import { refreshTokenController } from '../controllers/user/refreshToken/refreshTokenController'
 
 const usersRoutes = Router()
 
 usersRoutes.post('/', registerController)
 usersRoutes.post('/sessions', authenticateController)
 usersRoutes.get('/me', verifyToken, profileController)
+usersRoutes.patch('/token/refresh', refreshTokenController)
 
 export { usersRoutes }

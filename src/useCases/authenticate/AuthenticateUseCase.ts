@@ -12,6 +12,7 @@ interface IRequest {
 
 interface IResponse {
   token: string
+  refreshToken: string
 }
 
 export class AuthenticateUseCase {
@@ -38,8 +39,14 @@ export class AuthenticateUseCase {
       expiresIn: auth.experies_in_JWT,
     })
 
+    const refreshToken = sign({}, auth.secret_key_JWT, {
+      subject: user.id,
+      expiresIn: auth.experies_in_JWT,
+    })
+
     return {
       token,
+      refreshToken,
     }
   }
 }
