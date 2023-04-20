@@ -17,9 +17,13 @@ export function verifyToken(
   const [, token] = authHeader.split(' ')
 
   try {
-    const { sub: userId } = verify(token, auth.secret_key_JWT) as IPayloadDTO
+    const { sub: userId, role } = verify(
+      token,
+      auth.secret_key_JWT,
+    ) as IPayloadDTO
     request.user = {
       id: userId,
+      role,
     }
 
     return next()

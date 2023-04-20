@@ -34,15 +34,27 @@ export class AuthenticateUseCase {
       throw new InvalidCredentialsError()
     }
 
-    const token = sign({}, auth.secret_key_JWT, {
-      subject: user.id,
-      expiresIn: auth.experies_in_JWT,
-    })
+    const token = sign(
+      {
+        role: user.role,
+      },
+      auth.secret_key_JWT,
+      {
+        subject: user.id,
+        expiresIn: auth.experies_in_JWT,
+      },
+    )
 
-    const refreshToken = sign({}, auth.secret_key_JWT, {
-      subject: user.id,
-      expiresIn: auth.experies_in_JWT,
-    })
+    const refreshToken = sign(
+      {
+        role: user.role,
+      },
+      auth.secret_key_JWT,
+      {
+        subject: user.id,
+        expiresIn: auth.experies_in_JWT,
+      },
+    )
 
     return {
       token,

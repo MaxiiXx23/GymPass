@@ -8,7 +8,7 @@ import { createAndAuthenticateUserTest } from '@/utils/create-and-authenticate-u
 
 describe('Validate Check-in Controller (e2e)', () => {
   it('Should to be able to validate check-in', async () => {
-    const { token, userId } = await createAndAuthenticateUserTest(app)
+    const { token, userId } = await createAndAuthenticateUserTest(app, true)
 
     const gym = await prisma.gym.create({
       data: {

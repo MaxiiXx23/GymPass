@@ -7,7 +7,7 @@ import { describe, it, expect } from 'vitest'
 
 describe('Create Gym Controller e2e', () => {
   it('Should to be able to create a gym', async () => {
-    const { token } = await createAndAuthenticateUserTest(app)
+    const { token } = await createAndAuthenticateUserTest(app, true)
 
     const response = await request(app)
       .post('/gyms/')

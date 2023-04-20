@@ -5,6 +5,7 @@ import { fetchUserCheckInsHistoryController } from '../controllers/check-ins/fet
 import { verifyToken } from '../middlewares/verifyToken'
 import { validateCheckInController } from '../controllers/check-ins/validate-check-in/validateCheckInController'
 import { metricsController } from '../controllers/check-ins/metrics/metricsController'
+import { verifyUserRole } from '../middlewares/verify-user-role'
 
 const checkInsRoutes = Router()
 
@@ -18,6 +19,11 @@ checkInsRoutes.get(
 
 checkInsRoutes.get('/metrics', verifyToken, metricsController)
 
-checkInsRoutes.patch('/:checkInId/validate', validateCheckInController)
+checkInsRoutes.patch(
+  '/:checkInId/validate',
+  verifyToken,
+  verifyUserRole('ADMIN'),
+  validateCheckInController,
+)
 
 export { checkInsRoutes }
