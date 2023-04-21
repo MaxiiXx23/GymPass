@@ -7,9 +7,9 @@ import { z } from 'zod'
 const envSchema = z.object({
   NODE_ENV: z.enum(['dev', 'test', 'production']).default('dev'),
   PORT: z.coerce.number().default(3333),
-  JWT_SECRET_KEY: z.string(),
-  EXPIRES_IN_TOKEN: z.string(),
-  EXPIRES_IN_REFRESH_TOKEN: z.string(),
+  JWT_SECRET_KEY: z.string().default('testing'),
+  EXPIRES_IN_TOKEN: z.string().default('30m'),
+  EXPIRES_IN_REFRESH_TOKEN: z.string().default('7d'),
 })
 
 const _env = envSchema.safeParse(process.env)

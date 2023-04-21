@@ -18,7 +18,7 @@ describe('Authenticate Use Case', () => {
 
   it('Should to be authenticate user', async () => {
     const email = 'johndoe@test.com'
-    const password_hash = await hash('123456', 8)
+    const password_hash = await hash('123456', 6)
 
     await usersRepositoryInMemory.create({
       name: 'John Doe',
