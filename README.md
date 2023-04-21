@@ -4,7 +4,7 @@
 
 ### Sobre o Projeto:
 
-* ***GymPass*** é uma aplicação Node.js para check-ins em acadêmias. Nesse projeto tem como objetivo aperfeiçoar conhecimentos em SOLID, Designer Patterns, Docker e Testes tanto *unitários* quanto de *integração*
+* ***GymPass*** é uma aplicação Node.js para check-ins em acadêmias. Nesse projeto tem como objetivo aperfeiçoar conhecimentos em SOLID, Designer Patterns, Docker e Testes tanto *unitários* quanto de *integração*, tudo isso utilizando TDD no desenvolvimento.
 
 ### Tecnologias utilizadas:
 
@@ -38,15 +38,15 @@
 - [x] O usuário não pode fazer mais de dois check-ins por dia;
 - [x] O usuário não pode fazer check-in se não tiver pelo menos a 100m da acadêmia;
 - [x] O check-in só pode ser válido até 20 minutos após ser criado;
-- [] O check-in só pode ser válidado por administrador;
-- [] A acadêmia só pode ser criada por um admistrador;
+- [x] O check-in só pode ser válidado por administrador;
+- [x] A acadêmia só pode ser criada por um admistrador;
 - [x] A acadêmia não pode ser cadastrada com title(nome) duplicado;
 
 
 ## RNFs (Requisitos não funcionais)
 
 - [x] A senha precisa ser criptografada;
-- [] Os dados da aplicação precisam estar persistidos(salvos) em BD PostgreSQL;
+- [x] Os dados da aplicação precisam estar persistidos(salvos) em BD PostgreSQL;
 - [x] Todas as listas de dados precisar estar paginadas com 20 itens por página;
-- [] O usuário deve ser identificado por um JWT(JSON Web Token);
+- [x] O usuário deve ser identificado por um JWT(JSON Web Token);
 
