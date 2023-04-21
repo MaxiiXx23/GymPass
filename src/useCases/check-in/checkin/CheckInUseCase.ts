@@ -7,7 +7,7 @@ import { getDistanceBetweenCoordinate } from '@/utils/get-distance-between-coord
 
 import { MaxDistanceError } from './errors/maxDistanceError'
 import { MaxNumberOfCheckInsError } from './errors/maxNumberOfCheckInsError'
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 
 interface IRequest {

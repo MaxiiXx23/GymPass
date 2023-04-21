@@ -10,7 +10,7 @@ import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-
 
 import { MaxDistanceError } from './errors/maxDistanceError'
 import { MaxNumberOfCheckInsError } from './errors/maxNumberOfCheckInsError'
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
 let checkInsRepository: CheckInsRepositoryInMemory
 let gymsRepository: GymRepositoryInMemory

@@ -6,7 +6,7 @@ import { FetchUserCheckInsHistoryUseCase } from './fetch-users-check-ins-history
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 import { CheckInsRepositoryInMemory } from '@/http/repositories/checkinsRepository/in-memory/checkinsRepositoryInMemory'
 
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
 let usersRepository: UsersRepositoryInMemory
 let checkInsRepository: CheckInsRepositoryInMemory

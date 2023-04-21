@@ -1,6 +1,6 @@
 import { IUsersRepository } from '@/http/repositories/usersRepository/IUsersRepository'
 // import { User } from '@prisma/client'
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
 interface IRequest {
   userId: string

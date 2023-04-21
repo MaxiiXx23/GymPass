@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express'
 import { z } from 'zod'
 
-import { makeCheckInUseCase } from '@/useCases/checkin/factories/make-check-in-use-case'
+import { makeCheckInUseCase } from '@/useCases/check-in/checkin/factories/make-check-in-use-case'
 
 import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
-import { MaxDistanceError } from '@/useCases/checkin/errors/maxDistanceError'
-import { MaxNumberOfCheckInsError } from '@/useCases/checkin/errors/maxNumberOfCheckInsError'
+import { MaxDistanceError } from '@/useCases/check-in/checkin/errors/maxDistanceError'
+import { MaxNumberOfCheckInsError } from '@/useCases/check-in/checkin/errors/maxNumberOfCheckInsError'
 
 export async function createCheckInController(
   request: Request,

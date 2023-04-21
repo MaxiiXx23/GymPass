@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { z } from 'zod'
 
 import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
-import { makeFetchNearbyGymsUseCase } from '@/useCases/fetch-nearby-gyms/factories/make-fetch-nearby-gyms-use-case'
+import { makeFetchNearbyGymsUseCase } from '@/useCases/gym/fetch-nearby-gyms/factories/make-fetch-nearby-gyms-use-case'
 
 export async function fetchNearbyGymsController(
   request: Request,

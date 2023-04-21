@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from 'express'
 
 import { z } from 'zod'
 
-import { makeCreateGymUseCase } from '@/useCases/createGym/factories/make-create-gym-use-case'
-import { GymAlreadyExistsError } from '@/useCases/createGym/errors/GymAlreadyExistsError'
+import { makeCreateGymUseCase } from '@/useCases/gym/createGym/factories/make-create-gym-use-case'
+import { GymAlreadyExistsError } from '@/useCases/gym/createGym/errors/GymAlreadyExistsError'
 
 export async function createGymController(
   request: Request,

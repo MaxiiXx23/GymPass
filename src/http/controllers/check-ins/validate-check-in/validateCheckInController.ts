@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express'
 import { z } from 'zod'
 
 import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
-import { makeValidateCheckInUseCase } from '@/useCases/validate-check-in/factories/make-validate-check-in-use-case'
-import { LateCheckInValidationError } from '@/useCases/validate-check-in/errors/late-check-in-validation-error'
+import { makeValidateCheckInUseCase } from '@/useCases/check-in/validate-check-in/factories/make-validate-check-in-use-case'
+import { LateCheckInValidationError } from '@/useCases/check-in/validate-check-in/errors/late-check-in-validation-error'
 
 export async function validateCheckInController(
   request: Request,

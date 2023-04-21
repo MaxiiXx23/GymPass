@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { z } from 'zod'
 
 import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
-import { makeFetchUserCheckInsHistoryUseCase } from '@/useCases/fetch-user-check-ins-historty/factories/make-fetch-user-check-ins-history-use-case'
+import { makeFetchUserCheckInsHistoryUseCase } from '@/useCases/check-in/fetch-user-check-ins-historty/factories/make-fetch-user-check-ins-history-use-case'
 
 export async function fetchUserCheckInsHistoryController(
   request: Request,

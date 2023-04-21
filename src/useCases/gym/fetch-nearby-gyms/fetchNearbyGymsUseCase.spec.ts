@@ -4,7 +4,7 @@ import { FetchNearbyGymsUseCase } from './FetchNearbyGymsUseCase'
 
 import { GymRepositoryInMemory } from '@/http/repositories/gymsRepository/in-memory/GymRepositoryInMemory'
 
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
 let gymsRepository: GymRepositoryInMemory
 let sut: FetchNearbyGymsUseCase

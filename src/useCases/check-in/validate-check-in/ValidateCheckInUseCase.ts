@@ -2,7 +2,7 @@ import { Checkin } from '@prisma/client'
 import dayjs from 'dayjs'
 
 import { ICheckInsRepository } from '@/http/repositories/checkinsRepository/ICheckInsRespository'
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 import { LateCheckInValidationError } from './errors/late-check-in-validation-error'
 
 interface IRequest {

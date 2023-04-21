@@ -5,7 +5,7 @@ import { GetUserProfileUseCase } from './GetUserProfileUseCase'
 
 import { UsersRepositoryInMemory } from '@/http/repositories/usersRepository/in-memory/usersRepositoryInMemory'
 
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
 let usersRepository: UsersRepositoryInMemory
 let getUserProfileUseCase: GetUserProfileUseCase

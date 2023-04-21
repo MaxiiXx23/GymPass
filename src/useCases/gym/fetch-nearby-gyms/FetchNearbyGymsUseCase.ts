@@ -2,7 +2,7 @@ import { Gym } from '@prisma/client'
 
 import { IGymRepository } from '@/http/repositories/gymsRepository/IGymsRepository'
 
-import { ResourceNotFoundError } from '../errors/resourceNotFoundError'
+import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
 interface IRequest {
   userLatitude: number

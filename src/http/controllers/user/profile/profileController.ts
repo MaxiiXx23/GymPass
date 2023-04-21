@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
-import { makeGetUserProfileUseCase } from '@/useCases/get-user-profile/factories/make-get-user-profile-use-case'
+import { makeGetUserProfileUseCase } from '@/useCases/user/get-user-profile/factories/make-get-user-profile-use-case'
 import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
 export async function profileController(

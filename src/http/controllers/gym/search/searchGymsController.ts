@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 import { z } from 'zod'
 
 import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
-import { makeSearchGymsUseCase } from '@/useCases/search-fetch-gyms/factories/make-search-gyms-use-case'
+import { makeSearchGymsUseCase } from '@/useCases/gym/search-fetch-gyms/factories/make-search-gyms-use-case'
 
 export async function searchGymsController(
   request: Request,

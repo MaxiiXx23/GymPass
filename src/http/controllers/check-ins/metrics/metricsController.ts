@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { makeGetUserMetricsUseCase } from '@/useCases/get-user-metrics/factories/make-get-user-metrics-use-case'
+import { makeGetUserMetricsUseCase } from '@/useCases/check-in/get-user-metrics/factories/make-get-user-metrics-use-case'
 
 import { ResourceNotFoundError } from '@/useCases/errors/resourceNotFoundError'
 
